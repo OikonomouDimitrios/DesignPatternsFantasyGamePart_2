@@ -3,6 +3,8 @@ import java.util.Random;
 public class DesignPatternsFantasyGamePart_2 {
     public static void main(String[] args) {
         var enemy = new Troll("Troll");
+        new HealthLogger(enemy);
+        
         while (enemy.getHP() > 0) {
             enemy.printEnemyState();
             enemy.attack();

@@ -1,5 +1,4 @@
 public class Troll extends AbstractEnemy {
-    private int HP;
     private static final int baseHP = 100;
 
     @Override
@@ -14,24 +13,19 @@ public class Troll extends AbstractEnemy {
 
     @Override
     public void takeDamage(int DamageTaken) {
-        HP = HP - DamageTaken;
-        System.out.println(getEnemyName() + " health points set to " + getHP());
+        setHP(getHP() - DamageTaken);
         defineEnemyState();
-
-
     }
 
-    public int getHP() {
-        return HP;
-    }
 
-    public void setHP() {
-        HP = baseHP;
+    public void setHP(int hp) {
+        HP = hp;
+        notifyObserver();
     }
 
     public Troll(String newName) {
         super(newName);
-        setHP();
+        setHP(baseHP);
         setEnemyState(Normal);
     }
 
@@ -47,5 +41,6 @@ public class Troll extends AbstractEnemy {
     public void printEnemyState() {
         System.out.println(getEnemyName() + " is " + getEnemyState().getName());
     }
+
 
 }
